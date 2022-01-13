@@ -122,6 +122,7 @@
         {:else}
         <div class="bg-white w-full p-5">
             <p>Rules not available</p>
+            
         </div>
         
         {/if}
