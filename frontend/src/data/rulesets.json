@@ -1,0 +1,14 @@
+[
+    {
+        "id": "germany_a", 
+        "rule": "Germany ruleset"
+    },  
+    {
+        "id": "netherlands_a", 
+        "rule": "Netherlands ruleset"
+    },
+    {
+        "id": "sweden_a", 
+        "rule": "Sweden ruleset"
+    }
+]
