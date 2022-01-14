@@ -46,7 +46,16 @@ import ResultsShowbox from '$lib/ResultsShower/ResultsShowbox.svelte';
             // BODY WITH QUERY FOR NOTION
             createQuery(selectedCountry, selectedDateFormatted),
             // HEADERS FOR AUTHENTICATION
-            { headers: {'content-type': 'application/json', 'Authorization': import.meta.env.VITE_RULESET_SECRET, 'Notion-Version': '2021-08-16' }
+            { 
+                headers: {
+                    'content-type': 'application/json', 
+                    'Authorization': import.meta.env.VITE_RULESET_SECRET, 
+                    'Notion-Version': '2021-08-16',
+                    "Access-Control-Allow-Credentials": "true",
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods":"GET,OPTIONS,PATCH,DELETE,POST,PUT",
+                    "Access-Control-Allow-Headers":"X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version" 
+                }
         })
         .then(function(response) {
             // console.log('raw response data:')
