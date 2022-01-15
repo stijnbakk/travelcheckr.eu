@@ -1,10 +1,6 @@
+import type INotionIPARuleQuery from "$lib/interfaces/queryingFromNotion/queryBody";
 
-export interface NotionRuleQuery {
-	filter?: any,
-    sorts?: any
-}
-
-export function createQuery(country, search_date): NotionRuleQuery {
+export default function generateQueryBody(country, search_date): INotionIPARuleQuery {
     return {
         "filter": { "and": [
         {

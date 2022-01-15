@@ -4,7 +4,7 @@
     const getRulesFromApi = async () => {
         console.log('getRulesFromApi called from client');
 
-        const submit = await fetch('/api/getRules',{
+        const submit = await fetch('/api/query/rules',{
             method: 'POST',
             body: JSON.stringify({})
         });
@@ -20,7 +20,7 @@
     <hr/>
 
     <form on:submit|preventDefault={getRulesFromApi}>
-        <input type="submit" class="bg-blue-600 p-3">
+        <input type="submit" class="bg-blue-600 p-3" value="Get results">
     </form>
 
     <hr/>
