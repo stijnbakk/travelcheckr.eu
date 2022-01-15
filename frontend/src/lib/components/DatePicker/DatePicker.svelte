@@ -1,7 +1,7 @@
 <script>
     import { createEventDispatcher } from "svelte";
     import Calender from "./Calender.svelte";
-    import { getMonthName } from "./date-time.js";
+    import { getMonthName } from "./DateTime";
   
     const dispatch = createEventDispatcher();
   
