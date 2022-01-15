@@ -3,14 +3,14 @@
     import axios from 'axios';
 
     // Import components
-    import DatePicker from '$lib/DatePicker/DatePicker.svelte';
+    import DatePicker from '$lib/components/DatePicker/DatePicker.svelte';
 
     // Import custom functions
-    import { createQuery } from '$lib/Query';
-    import { cleanRules } from '$lib/CleanRules';
+    import generateQueryBody from '$lib/services/queryingFromNotion/generateQueryBody';} from '$lib/services/querying_from_notion/generateQueryBody';
+    import { cleanRules } from '$lib/services/parseData/cleanNotionRules';
 
     // Import constants
-    import { countries } from '$lib/constants';
+    import { countries } from '$lib/constants/countryValues';
 
 
     // Initialize variables
@@ -29,8 +29,8 @@
 
     
     // Debugging & development
-    import { testData } from '$lib/testData';
-import ResultsShowbox from '$lib/ResultsShower/ResultsShowbox.svelte';
+    // import { testData } from '$lib/testData';
+import ResultsShowbox from '$lib/components/ResultsShower/ResultsShowbox.svelte';
     // console.log(cleanRules(testData.results))
     // result = cleanRules(testData.results)
     // console.log(result)
@@ -95,7 +95,7 @@ import ResultsShowbox from '$lib/ResultsShower/ResultsShowbox.svelte';
             // API URI
             import.meta.env.VITE_RULESET_URI, 
             // BODY WITH QUERY FOR NOTION
-            createQuery(selectedCountry, selectedDateFormatted),
+            generateQueryBody(selectedCountry, selectedDateFormatted),
             // HEADERS FOR AUTHENTICATION
             { 
                 headers: {
