@@ -58,7 +58,7 @@ export function cleanRules(rawApiData:Array<any>):any{
             rules:[],
         },
         "d_expect_during_stay": {
-            text:'Expectations to be met during your stay',
+            text:'What you can expect during your stay',
             rules:[],
         }
     };

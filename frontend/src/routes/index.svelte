@@ -38,8 +38,59 @@ import ResultsShowbox from '$lib/ResultsShower/ResultsShowbox.svelte';
 
 
 
+    // async function doPost () {
+    //     loadingResults = true;
+    //     await axios.post(
+    //         // API URI
+    //         import.meta.env.VITE_RULESET_URI, 
+    //         // BODY WITH QUERY FOR NOTION
+    //         createQuery(selectedCountry, selectedDateFormatted),
+    //         // HEADERS FOR AUTHENTICATION
+    //         { 
+    //             headers: {
+    //                 'content-type': 'application/json', 
+    //                 'Authorization': import.meta.env.VITE_RULESET_SECRET, 
+    //                 'Notion-Version': '2021-08-16',
+    //                 "Access-Control-Allow-Credentials": "true",
+    //                 "Access-Control-Allow-Origin": "*",
+    //                 "Access-Control-Allow-Methods":"GET,OPTIONS,PATCH,DELETE,POST,PUT",
+    //                 "Access-Control-Allow-Headers":"X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version" 
+    //             }
+    //     })
+    //     .then(function(response) {
+    //         // console.log('raw response data:')
+    //         // console.log(response.data.results)
+
+
+    //         result = cleanRules(response.data.results);
+    //         resultsAvailable = true;
+    //         loadingResults = false;
+    //         // console.log("Grouped data should show here after succesfull query of rules")
+    //         // console.log('cleaned and grouped data:')
+    //         // console.log(result)
+    //         return response.data;
+    //     })
+    //     .catch(function(error) {
+    //         console.log(error);
+    //     });
+    // }
+
     async function doPost () {
         loadingResults = true;
+
+        // await axios(
+        //     import.meta.env.VITE_RULESET_URI, 
+        //     {
+        //         method: 'POST',
+        //         // mode: 'no-cors',
+        //         headers: {
+        //             'Access-Control-Allow-Origin': '*',
+        //             'Content-Type': 'application/json',
+        //         },
+        //         body: createQuery(selectedCountry, selectedDateFormatted),
+        //     },
+        // )
+
         await axios.post(
             // API URI
             import.meta.env.VITE_RULESET_URI, 
@@ -177,7 +228,7 @@ import ResultsShowbox from '$lib/ResultsShower/ResultsShowbox.svelte';
             {/if}
             {#if result.d_expect_during_stay.rules.length > 0}
             <div class="bg-white p-5 mt-3 rounded-sm">
-                <h2 class="font-bold text-lg">{result.c_rules_during_stay.text}</h2>
+                <h2 class="font-bold text-lg">{result.d_expect_during_stay.text}</h2>
                 <hr/>
                 {#each result.d_expect_during_stay.rules as rule}
                     <a class="py-3 block">
