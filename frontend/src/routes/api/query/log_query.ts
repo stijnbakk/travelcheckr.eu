@@ -9,23 +9,48 @@
  */
 
 
+// Import libraries
+import axios from 'axios';
 
-// Services
-import fetchNotionRules from '$lib/services/queryingFromNotion/fetchNotionRules';
+// Import custom services
+import generateLogBody from '$lib/services/queryingFromNotion/generateLogBody';
 
-// Types & Interfaces
-import logNotionRuleQuery from '$lib/services/queryingFromNotion/logNotionRuleQuery';
+// Import constants
+import notionApiRequestHeaders from '$lib/constants/notionApiRequestHeaders';
+
+// Import types & Interfaces
+// n/a
+
 
 // create endpoint for POST, return unprocessed array of rules
-export async function post() {
-    console.log('log_rules() serverside called')
+export async function post(request) {
     try {
-        const logResult = await logNotionRuleQuery('test','2022-01-01');
-        return {
-            status: 200
-        }
+        // 1. Parse incoming data
+        const requestParsed = JSON.parse(request.body);
+
+        // 2. Store incoming data
+        const destination = requestParsed.destination;
+        const search_date = requestParsed.search_date;
+
+        // 3. Create query body
+        const query = generateLogBody(destination,search_date);
+
+        // 4.  Setup request
+        const uri:string = import.meta.env.VITE_QUERYLOG_URI;
+        const headers = notionApiRequestHeaders;
+
+        // 5. Make POST request to log the query to Notion back-end
+        const logQueryResult = await axios.post(uri, query, headers);
+
+
+        // 6. Process result of querying Notion API
+        if(logQueryResult){
+            console.log(`Logging of query (${destination}, ${search_date}) succesfull`);
+            return {status: 200}
+        } 
+        
     } catch (error) {
-        console.error(error)
+        console.log(`Caught error executing in /api/log_query with request: ${request.body}`, error);
     }
 }
 

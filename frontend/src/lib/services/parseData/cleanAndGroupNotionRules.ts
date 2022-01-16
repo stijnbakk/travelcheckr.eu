@@ -26,7 +26,7 @@ export interface TGroupedRules{
 }
 
 
-export function cleanNotionRules(rawApiData:Array<any>):any{
+export default function cleanAndGroupNotionRules(rawApiData:Array<any>):any{
     // LOGIC:
     // 1. Clean up rules to keep only information we need
     // 2. Group rules by type

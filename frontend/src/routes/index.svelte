@@ -1,8 +1,8 @@
 <script>
     let queryResult; 
 
-    $: search_date = '2021-01-15'
-    $: destination = 'germany'
+    let search_date = '2022-01-15';
+    let destination = 'germany';
 
     const startQueryRequest = () => {
         queryFromBackend();
@@ -26,6 +26,10 @@
 
         fetch('/api/query/log_query',{
             method: 'POST',
+            body: JSON.stringify({
+                search_date: search_date,
+                destination: destination
+            })
         });
 
     }
