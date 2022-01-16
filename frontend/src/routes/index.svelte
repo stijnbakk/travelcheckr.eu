@@ -1,32 +1,49 @@
 <script>
+    let queryResult; 
 
-    let receivedRules; 
-    const getRulesFromApi = async () => {
-        console.log('getRulesFromApi called from client');
+    $: search_date = '2021-01-15'
+    $: destination = 'germany'
 
-        const submit = await fetch('/api/query/rules',{
+    const startQueryRequest = () => {
+        queryFromBackend();
+        logQueryToBackend();
+    }
+
+    const queryFromBackend = async () => {
+        const getResult = await fetch('/api/query/query_rules',{
             method: 'POST',
-            body: JSON.stringify({})
+            body: JSON.stringify({
+                search_date: search_date,
+                destination: destination
+            })
         });
 
-        receivedRules = await submit.json();
-        console.log(`received data from server on client side:`);
-        console.log(receivedRules);
+        queryResult = await getResult.json();
     }
+
+    const logQueryToBackend = async () => {
+        console.log('logRulesToApi called from client');
+
+        fetch('/api/query/log_query',{
+            method: 'POST',
+        });
+
+    }
+
 </script>
 
 <div class="p-5">
     <h1>Api POST test</h1>
     <hr/>
 
-    <form on:submit|preventDefault={getRulesFromApi}>
+    <form on:submit|preventDefault={startQueryRequest}>
         <input type="submit" class="bg-blue-600 p-3" value="Get results">
     </form>
 
     <hr/>
     <h1>Results:</h1>
     <pre>
-        {receivedRules}
+        {queryResult}
     </pre>
 
 

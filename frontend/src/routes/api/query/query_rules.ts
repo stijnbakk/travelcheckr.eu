@@ -19,14 +19,16 @@ import { cleanNotionRules } from '$lib/services/parseData/cleanNotionRules';
 import logNotionRuleQuery from '$lib/services/queryingFromNotion/logNotionRuleQuery';
 
 // create endpoint for POST, return unprocessed array of rules
-export async function post() {
+export async function post(request) {
+    console.log('query_rules called, request:')
+    console.log(request.body)
     try {
         const queryNotionRulesResult = await fetchNotionRules('germany','2022-01-15');
 
         if (queryNotionRulesResult.status === 200 && queryNotionRulesResult.data.object === 'list') {
             const cleanedRuleSet = cleanNotionRules(queryNotionRulesResult.data.results);
             // console.log('before logNotionRuleQuery()')
-            logNotionRuleQuery('test','2022-01-01');
+            // logNotionRuleQuery('test','2022-01-01');
             // console.log('after logNotionRuleQuery()')
             return{
                 status: 200,

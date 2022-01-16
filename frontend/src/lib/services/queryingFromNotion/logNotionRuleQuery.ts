@@ -1,8 +1,3 @@
-/**
- * Summary. Make POST call to Notion to retrieve rules
- * 
- * @param {TCountry} country      - The country code to query for
- */
  import type { TCountry } from "$lib/interfaces/IAllowedValues/interfaceCountries";
  import type INotionIPARuleQuery from "$lib/interfaces/IQueryingFromNotion/queryBody";
  import axios from "axios";
@@ -10,7 +5,7 @@ import generateLogBody from "./generateLogBody";
  import generateQueryBody from "./generateQueryBody";
  
  
- export default function logNotionRuleQuery (country, search_date) {
+ export default async function logNotionRuleQuery (country, search_date) {
      /**
       * Summary. Make POST call to Notion API to retrieve rules
       * 
@@ -33,7 +28,10 @@ import generateLogBody from "./generateLogBody";
          }
  
          // Make POST request to Notion API
-         axios.post(uri, query, headers);
+         console.log('about to attempt posting of logging query')
+        //  const logQueryResult = await axios.post(uri, query, headers);
+        axios.post(uri, query, headers);
+        //  console.log(logQueryResult);
          // TODO: add types to axios
 
      } catch (error){
