@@ -5,11 +5,11 @@
     let destination = 'germany';
 
     const startQueryRequest = () => {
-        queryFromBackend();
+        queryRulesFromBackend();
         logQueryToBackend();
     }
 
-    const queryFromBackend = async () => {
+    const queryRulesFromBackend = async () => {
         const getResult = await fetch('/api/query/query_rules',{
             method: 'POST',
             body: JSON.stringify({
@@ -22,8 +22,6 @@
     }
 
     const logQueryToBackend = async () => {
-        console.log('logRulesToApi called from client');
-
         fetch('/api/query/log_query',{
             method: 'POST',
             body: JSON.stringify({
@@ -31,7 +29,6 @@
                 destination: destination
             })
         });
-
     }
 
 </script>
