@@ -1,4 +1,4 @@
-import type { ICountry, TCountries, TCountry } from "$lib/interfaces/allowedValues/interfaceCountries";
+import type { ICountry, TCountries, TCountry } from "$lib/interfaces/IAllowedValues/interfaceCountries";
 
 const createCountryObject = (code:TCountry, name:string):ICountry => {
     return {

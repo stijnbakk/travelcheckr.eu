@@ -1,6 +1,35 @@
 <script>
 
+    let receivedRules; 
+    const getRulesFromApi = async () => {
+        console.log('getRulesFromApi called from client');
+
+        const submit = await fetch('/api/query/rules',{
+            method: 'POST',
+            body: JSON.stringify({})
+        });
+
+        receivedRules = await submit.json();
+        console.log(`received data from server on client side:`);
+        console.log(receivedRules);
+    }
 </script>
-<main>
-    <h1>Rulemate.eu</h1>
-</main>
+
+<div class="p-5">
+    <h1>Api POST test</h1>
+    <hr/>
+
+    <form on:submit|preventDefault={getRulesFromApi}>
+        <input type="submit" class="bg-blue-600 p-3" value="Get results">
+    </form>
+
+    <hr/>
+    <h1>Results:</h1>
+    <pre>
+        {receivedRules}
+    </pre>
+
+
+
+
+</div>

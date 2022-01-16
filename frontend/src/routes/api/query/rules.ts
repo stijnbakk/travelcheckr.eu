@@ -14,24 +14,28 @@
 import fetchNotionRules from '$lib/services/queryingFromNotion/fetchNotionRules';
 
 // Types & Interfaces
-import type { TCountry } from '$lib/interfaces/allowedValues/interfaceCountries';
+import type { TCountry } from '$lib/interfaces/IAllowedValues/interfaceCountries';
 import { cleanNotionRules } from '$lib/services/parseData/cleanNotionRules';
+import logNotionRuleQuery from '$lib/services/queryingFromNotion/logNotionRuleQuery';
 
 // create endpoint for POST, return unprocessed array of rules
 export async function post() {
     try {
-        const queryNotionRulesResult = await fetchNotionRules();
+        const queryNotionRulesResult = await fetchNotionRules('germany','2022-01-15');
 
         if (queryNotionRulesResult.status === 200 && queryNotionRulesResult.data.object === 'list') {
             const cleanedRuleSet = cleanNotionRules(queryNotionRulesResult.data.results);
+            // console.log('before logNotionRuleQuery()')
+            logNotionRuleQuery('test','2022-01-01');
+            // console.log('after logNotionRuleQuery()')
             return{
                 status: 200,
                 body: cleanedRuleSet,
             }
-        
+
         } else {
             console.error('error: ', queryNotionRulesResult.status)
-            console.error(queryNotionRulesResult)
+            console.error(queryNotionRulesResult) 
         }
     } catch (error) {
         console.error(error)

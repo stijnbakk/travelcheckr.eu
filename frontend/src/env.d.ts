@@ -3,6 +3,10 @@
 interface ImportMetaEnv {
     readonly VITE_RULESET_URI: string;
     readonly VITE_RULESET_SECRET: string;
+
+    readonly VITE_QUERYLOG_URI: string;
+    readonly VITE_QUERYLOG_DB_ID: string;
+    readonly VITE_QUERYLOG_ORIGIN: "development" | "production";
     // more env variables...
   }
   

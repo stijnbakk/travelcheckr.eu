@@ -1,4 +1,4 @@
-import type INotionIPARuleQuery from "$lib/interfaces/queryingFromNotion/queryBody";
+import type INotionIPARuleQuery from "$lib/interfaces/IQueryingFromNotion/queryBody";
 
 export default function generateQueryBody(country, search_date): INotionIPARuleQuery {
     return {
