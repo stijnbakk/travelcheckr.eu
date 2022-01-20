@@ -1,14 +1,15 @@
 <script>
-    export let testBoolean;
+    export let setMapToDestination;
+    export let destination;
 </script>
 
 
-<!-- EuropeMap container-->
 <div class="w-screen h-screen bg-white top-0 overflow-hidden flex justify-center align-middle">
 
     <div class="europeMapParent">
 
-    <div class='europeMap' class:france={testBoolean}>
+    <div class={setMapToDestination ? `europeMap ${destination}` : 'europeMap'}>
+        <!-- <div class={setMapToDestination ? destination : '' }> -->
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 522 444" preserveAspectRatio="xMidYMid meet">
             <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                 <g id="Artboard" transform="translate(-639.000000, -85.000000)" fill="#F1F1F1" fill-rule="nonzero" stroke="#FFFFFF" stroke-width="0.2">
@@ -64,6 +65,7 @@
         </svg>
     </div>
     </div>
+    <!-- </div> -->
 </div>
 
 

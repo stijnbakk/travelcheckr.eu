@@ -1,53 +1,60 @@
 <script>
-    let queryResult; 
+    // Import custom components and sections
+    import EuropeMap from "$lib/components/landingPage/EuropeMap.svelte"
+    import LandingPageSection from "$lib/components/landingPage/LandingPageSection.svelte";
 
-    let search_date = '2022-01-15';
-    let destination = 'germany';
 
-    const startQueryRequest = () => {
-        queryRulesFromBackend();
-        logQueryToBackend();
-    }
+    
+    let initialDate = new Date()
+    let search_date= initialDate.toISOString().split('T')[0]
 
-    const queryRulesFromBackend = async () => {
-        const getResult = await fetch('/api/query/query_rules',{
-            method: 'POST',
-            body: JSON.stringify({
-                search_date: search_date,
-                destination: destination
-            })
-        });
+    let queryResult;
+    const setQueryResult = (queryResultInput) => (queryResult = queryResultInput);
 
-        queryResult = await getResult.json();
-    }
+    let isResultsAvailable = false
+    const setResultsAvailable = (booleanInput) => (isResultsAvailable = booleanInput);
 
-    const logQueryToBackend = async () => {
-        fetch('/api/query/log_query',{
-            method: 'POST',
-            body: JSON.stringify({
-                search_date: search_date,
-                destination: destination
-            })
-        });
-    }
+
+    // Setup parameters for EuropeMap
+    let destination="germany"
+
+    const toggleMapBoolean = () => (
+        console.log('toggleMapBoolean triggered inside index')
+    )
+
+
+    
+
 
 </script>
 
-<div class="p-5">
-    <h1>Api POST test</h1>
-    <hr/>
-
-    <form on:submit|preventDefault={startQueryRequest}>
-        <input type="submit" class="bg-blue-600 p-3" value="Get results">
-    </form>
-
-    <hr/>
-    <h1>Results:</h1>
-    <pre>
-        {queryResult}
-    </pre>
 
 
 
+<svelte:head>
+	<title>Check travel rules and COVID restrictions - Rulemate.eu</title>
+	<meta name="robots" content="noindex nofollow" />
+	<html lang="en" />
+</svelte:head>
 
+<EuropeMap destination={destination} setMapToDestination={isResultsAvailable} />
+
+<div class="w-full absolute top-0 block">
+    <LandingPageSection 
+        isResultsAvailable={isResultsAvailable}
+        setResultsAvailable={setResultsAvailable} 
+        queryResult={queryResult}
+        setQueryResult={setQueryResult}
+    />
+        
+    <div>
+        test content below landing component
+    </div>
 </div>
+
+
+
+
+
+
+
