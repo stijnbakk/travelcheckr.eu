@@ -47,9 +47,6 @@
         setQueryResult={setQueryResult}
     />
         
-    <div>
-        test content below landing component
-    </div>
 </div>
 
 
