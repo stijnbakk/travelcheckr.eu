@@ -47,8 +47,6 @@
     setQueryResult={setQueryResult}
 />
 
-<h1>Content below</h1>
-
 <!-- <EuropeMap destination={destination} setMapToDestination={isResultsAvailable} /> -->
 
 
