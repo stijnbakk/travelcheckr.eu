@@ -21,11 +21,6 @@
     const toggleMapBoolean = () => (
         console.log('toggleMapBoolean triggered inside index')
     )
-
-
-    
-
-
 </script>
 
 

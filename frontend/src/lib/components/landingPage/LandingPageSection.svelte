@@ -3,7 +3,8 @@
     import QueryBox from "$lib/components/queryBox/queryBox.svelte"
     import RuleGroupCard from "$lib/components/rules/RuleGroupCard.svelte"
     import LandingPageContainer from "./LandingPageContainer.svelte";
-import EuropeMap from "./EuropeMap.svelte";
+    import EuropeMap from "./EuropeMap.svelte";
+    import Lazy from 'svelte-lazy';
 
 
 
@@ -24,7 +25,9 @@ import EuropeMap from "./EuropeMap.svelte";
 
 
 <div class="relative block h-auto">
-    <EuropeMap destination="germany" setMapToDestination={isResultsAvailable}/>
+    <Lazy>
+        <EuropeMap destination="germany" setMapToDestination={isResultsAvailable}/>
+    </Lazy>
 
     <div class="grid grid-rows-[{menuBarHeight}_auto] md:h-screen relative top-0">
         <div class=""><!-- empty placeholder for top menu bar content --></div>
