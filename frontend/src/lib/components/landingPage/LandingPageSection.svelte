@@ -2,6 +2,8 @@
     import { exampleGroupedRules } from "$lib/constants/exampleGroupedRules"
     import QueryBox from "$lib/components/queryBox/queryBox.svelte"
     import RuleGroupCard from "$lib/components/rules/RuleGroupCard.svelte"
+    import LandingPageContainer from "./LandingPageContainer.svelte";
+import EuropeMap from "./EuropeMap.svelte";
 
 
 
@@ -15,54 +17,89 @@
     export let setQueryResult;
     
     // $:console.log('queryResult in landingpage:', queryResult)
+
+
+    let menuBarHeight = '50px'
 </script>
 
-<div 
-            id="landing"
-            class="md:grid md:grid-cols-[auto_auto] lg:grid-cols-[auto_auto_auto]"
-            class:resultView={isResultsAvailable}
+
+<div class="relative block h-auto">
+    <EuropeMap destination="germany" setMapToDestination={isResultsAvailable}/>
+
+    <div class="grid grid-rows-[{menuBarHeight}_auto] md:h-screen relative top-0">
+        <div class=""><!-- empty placeholder for top menu bar content --></div>
+        <div class="">
+            <div 
+                id="landing"
+                class="
+                    md:h-screen
+                    mt-[-{menuBarHeight}]
+                    pt-[{menuBarHeight}]
+                    md:grid 
+                    md:grid-cols-[auto_auto] lg:grid-cols-[auto_auto_auto]
+                "
+                class:resultView={isResultsAvailable}
             >
-            <!-- 1st grid column -->
-            <div class="column1 h-screen grid-col flex justify-center items-center flex-col p-10 text-center">
+                <div 
+                    class="
+                        column1
+                        md:h-full
+                        flex flex-col justify-center items-center p-5
+                    "
+                >
                     <h1 class="font-serif font-bold text-4xl leading-normal mb-5">Check travel rules and COVID restrictions</h1>
-                    <p class="text-xl leading-normal font-light mb-10">Quickly understand what to <span class="highlighted_underline">do</span>, <span class="highlighted_underline">bring</span>, <span class="highlighted_underline">know</span> and <span class="highlighted_underline">expect</span> about your trip</p>
-                    <!-- <button on:click={setResultsAvailable} value="test me">Test me!!!</button> -->
+                    <p class="text-xl leading-normal font-light mb-7">Quickly understand what to <span class="highlighted_underline">do</span>, <span class="highlighted_underline">bring</span>, <span class="highlighted_underline">know</span> and <span class="highlighted_underline">expect</span> about your trip</p>
+                    
                     
                     <QueryBox 
                         setResultsAvailable={setResultsAvailable}
                         setQueryResult={setQueryResult}
-                        />
-                    
-            </div>
-            <!-- 2nd grid column -->
-            {#if isResultsAvailable}
-            <div class="column2 md:flex justify-center items-left md:h-full flex-col p-10 text-left h-auto">
+                    />
+                </div>
 
-                <h1 class="font-bold font-serif text-3xl mb-10">What you need to know about your trip</h1>
 
-                {#if queryResult}
-                    {#if queryResult.a_actions_before_travel}
-                        <RuleGroupCard ruleset={queryResult.a_actions_before_travel}/>
+                {#if isResultsAvailable}
+                <div 
+                    class="
+                        column2 
+                        h-full 
+                        md:overflow-y-scroll 
+                        py-8 p-5">
+
+                    <h1 class="font-bold font-serif text-3xl mb-10">What you need to know about your trip</h1>
+
+                    {#if queryResult}
+                        {#if queryResult.a_actions_before_travel}
+                            <RuleGroupCard ruleset={queryResult.a_actions_before_travel}/>
+                        {/if}
+
+                        {#if queryResult.b_documents_during_travel}
+                            <RuleGroupCard ruleset={queryResult.b_documents_during_travel}/>
+                        {/if}
+
+                        {#if queryResult.c_rules_during_stay}
+                            <RuleGroupCard ruleset={queryResult.c_rules_during_stay}/>
+                        {/if}
+
+                        {#if queryResult.d_expect_during_stay}
+                            <RuleGroupCard ruleset={queryResult.d_expect_during_stay}/>
+                        {/if}
                     {/if}
+                </div>
 
-                    {#if queryResult.b_documents_during_travel}
-                        <RuleGroupCard ruleset={queryResult.b_documents_during_travel}/>
-                    {/if}
-
-                    {#if queryResult.c_rules_during_stay}
-                        <RuleGroupCard ruleset={queryResult.c_rules_during_stay}/>
-                    {/if}
-
-                    {#if queryResult.d_expect_during_stay}
-                        <RuleGroupCard ruleset={queryResult.d_expect_during_stay}/>
-                    {/if}
+                <div class="column3"></div>
                 {/if}
             </div>
-            {/if}
-
-            <!-- 3rd grid column -->
-            <div class="column3 "></div>
+        </div>
+    </div>
 </div>
+
+
+
+
+
+
+
 
 <style lang="scss">
     .highlighted_underline{
@@ -77,7 +114,10 @@
             .column1{
                 width: 100vw;
                 transition: width 0.5s ease-in-out;
+                transition: height 0.5s ease-in-out;
                 text-align: center;
+                min-height: 100vh;
+                margin-top: -50px
             }
             .column2, .column3{
                 visibility: visible;
@@ -85,6 +125,8 @@
             &.resultView{
                 .column1{
                     width: 100%;
+                    min-height: 0px;
+                    margin-top: 0px;
                 }
                 .column2{
                     width: 100%;

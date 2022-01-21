@@ -3,11 +3,11 @@
 </script>
 
 <main>
-	<!-- <div class="w-screen p-3 text-center absolute top-0 z-10">
+	<div class="w-screen p-3 text-center absolute top-0 z-10 h-[50px]">
         <div>
             <h1 class="font-bold font-serif">rulemate<span>.eu</span></h1>
         </div>
-    </div> -->
+    </div>
 
 	<slot />
 

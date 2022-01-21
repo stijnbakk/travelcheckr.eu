@@ -16,7 +16,7 @@
 
 
     // Setup parameters for EuropeMap
-    let destination="germany"
+    let destination="belgium"
 
     const toggleMapBoolean = () => (
         console.log('toggleMapBoolean triggered inside index')
@@ -37,17 +37,20 @@
 	<html lang="en" />
 </svelte:head>
 
-<EuropeMap destination={destination} setMapToDestination={isResultsAvailable} />
 
-<div class="w-full absolute top-0 block">
-    <LandingPageSection 
-        isResultsAvailable={isResultsAvailable}
-        setResultsAvailable={setResultsAvailable} 
-        queryResult={queryResult}
-        setQueryResult={setQueryResult}
-    />
-        
-</div>
+
+
+<LandingPageSection 
+    isResultsAvailable={isResultsAvailable}
+    setResultsAvailable={setResultsAvailable} 
+    queryResult={queryResult}
+    setQueryResult={setQueryResult}
+/>
+
+<h1>Content below</h1>
+
+<!-- <EuropeMap destination={destination} setMapToDestination={isResultsAvailable} /> -->
+
 
 
 
