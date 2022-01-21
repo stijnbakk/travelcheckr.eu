@@ -27,7 +27,7 @@
 
 
 <svelte:head>
-	<title>Check travel rules and COVID restrictions - Rulemate.eu</title>
+	<title>Check travel rules and COVID restrictions - TravelCheckr.eu</title>
 	<meta name="robots" content="noindex nofollow" />
 	<html lang="en" />
 </svelte:head>

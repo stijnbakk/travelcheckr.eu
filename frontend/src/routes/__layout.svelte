@@ -8,7 +8,7 @@
 <main>
 	<div class="w-screen p-3 text-center absolute top-0 z-10 h-[50px]">
         <div>
-            <h1 class="font-bold font-serif">rulemate<span class="font-normal">.eu 
+            <h1 class="font-bold font-serif">TravelCheckr<span class="font-normal">.eu 
 
 				{#if isBeta}
 				[beta]
@@ -31,7 +31,7 @@
 	</div>
 
 	<footer class='bg-neutral-700 p-10 text-center text-white'>
-		<p class='font-serif font-bold'>Rulemate<span class="font-normal">.eu</span></p>
+		<p class='font-serif font-bold'>TravelCheckr<span class="font-normal">.eu</span></p>
 		<p class="opacity-25">Built with ♥ in Haarlem, Netherlands</p>
 		<a class="opacity-25 underline underline-offset-2" href="mailto:stijn@rulemate.eu">stijn@rulemate.eu</a>
 	</footer>
