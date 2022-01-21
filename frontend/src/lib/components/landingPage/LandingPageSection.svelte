@@ -45,6 +45,7 @@ import EuropeMap from "./EuropeMap.svelte";
                         column1
                         md:h-full
                         flex flex-col justify-center items-center p-5
+                        pt-16
                     "
                 >
                     <h1 class="font-serif font-bold text-4xl leading-normal mb-5">Check travel rules and COVID restrictions</h1>
@@ -64,7 +65,8 @@ import EuropeMap from "./EuropeMap.svelte";
                         column2 
                         h-full 
                         md:overflow-y-scroll 
-                        py-8 p-5">
+                        py-8 p-5 md:pt-16
+                        ">
 
                     <h1 class="font-bold font-serif text-3xl mb-10">What you need to know about your trip</h1>
 
