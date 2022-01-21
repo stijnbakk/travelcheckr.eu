@@ -30,7 +30,7 @@
 		</div>
 	</div>
 
-	<footer class='bg-gray-700 p-10 text-center text-white'>
+	<footer class='bg-neutral-700 p-10 text-center text-white'>
 		<p class='font-serif font-bold'>Rulemate<span class="font-normal">.eu</span></p>
 		<p class="opacity-25">Built with ♥ in Haarlem, Netherlands</p>
 		<a class="opacity-25 underline underline-offset-2" href="mailto:stijn@rulemate.eu">stijn@rulemate.eu</a>

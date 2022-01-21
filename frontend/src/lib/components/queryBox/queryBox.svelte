@@ -79,6 +79,6 @@
         @apply bg-black text-white font-serif rounded w-full p-3 mt-3;
     }
     .button_loading{
-        @apply bg-gray-400;
+        @apply bg-neutral-400;
     }
 </style>
