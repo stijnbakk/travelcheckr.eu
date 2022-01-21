@@ -1,11 +1,20 @@
 <script>
 	import '../app.css';
+
+	let environment = import.meta.env.VITE_DEPLOY_MODE
+	$: isBeta = environment === 'beta' ? true : environment ==="development" ? true : false;
 </script>
 
 <main>
 	<div class="w-screen p-3 text-center absolute top-0 z-10 h-[50px]">
         <div>
-            <h1 class="font-bold font-serif">rulemate<span>.eu</span></h1>
+            <h1 class="font-bold font-serif">rulemate<span class="font-normal">.eu 
+
+				{#if isBeta}
+				[beta]
+				{/if}
+
+			</span></h1>
         </div>
     </div>
 
