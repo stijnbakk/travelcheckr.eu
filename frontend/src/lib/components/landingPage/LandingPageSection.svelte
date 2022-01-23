@@ -7,12 +7,11 @@
     import Lazy from 'svelte-lazy';
     import BetaRuleWarning from "../BetaWarnings/BetaRuleWarning.svelte";
     import { queryInputDestination, queryResult, queryResultAvailable, queryResultValid } from "$lib/stores/stores";
+    import { menuBarHeight } from '$lib/stores/stores'
 
 
 
-    // set some stuff for styling
-    let menuBarHeight = '50px'
-
+    // Ability to call request for updated rules 
     let startUpdatedQueryRequestInsideQueryBox;
 	function onStartQueryRequest() {
 		startUpdatedQueryRequestInsideQueryBox();
@@ -25,15 +24,15 @@
         <EuropeMap />
     </Lazy>
 
-    <div class="grid grid-rows-[{menuBarHeight}_auto] md:h-screen relative top-0">
+    <div class="grid grid-rows-[{$menuBarHeight}_auto] md:h-screen relative top-0">
         <div class=""><!-- empty placeholder for top menu bar content --></div>
         <div class="">
             <div 
                 id="landing"
                 class="
                     md:h-screen
-                    mt-[-{menuBarHeight}]
-                    pt-[{menuBarHeight}]
+                    mt-[-{$menuBarHeight}]
+                    pt-[{$menuBarHeight}]
                     md:grid 
                     md:grid-cols-[auto_auto] lg:grid-cols-[auto_auto_auto]
                 "
