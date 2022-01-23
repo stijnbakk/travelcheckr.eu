@@ -29,11 +29,10 @@
             <div 
                 id="landing"
                 class="
-                    md:h-screen
-                    mt-[-{$menuBarHeight}]
-                    pt-[{$menuBarHeight}]
+
                     md:grid 
                     md:grid-cols-[auto_auto] lg:grid-cols-[auto_auto_auto]
+
                 "
                 class:resultView={$queryResultAvailable}
             >
@@ -61,8 +60,7 @@
                         column2 
                         h-full 
                         md:overflow-y-scroll 
-                        py-8 p-5 md:pt-16
-                        flex flex-col justify-center items-left
+                        px-5 py-10 
                         ">
                     {#if !$queryResultValid}
                         <div class="text-left">
@@ -152,7 +150,11 @@
         }
     }
     
-    
+    @media only screen and (min-width: 768px){
+        #landing{
+            height: calc(100vh - 50px);
+        }
+    }
     @media only screen and (min-width: 768px) and (max-width: 1023px) {
         #landing{
             .column1{

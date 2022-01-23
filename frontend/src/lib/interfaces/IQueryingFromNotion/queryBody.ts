@@ -1,6 +1,7 @@
 
 export default interface INotionIPARuleQuery {
 	filter?: IFilter,
+    sorts?: any[]
 }
 
 interface IFilter {

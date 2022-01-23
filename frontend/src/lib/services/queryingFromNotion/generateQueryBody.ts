@@ -22,6 +22,12 @@ export default function generateQueryBody(country, search_date): INotionIPARuleQ
             }
         }
         ]
-        }
+        },
+        "sorts": [
+            {
+                "property": "priority",
+                "direction": "ascending"
+              }
+            ]
     }
 }
