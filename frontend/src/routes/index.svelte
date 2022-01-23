@@ -1,6 +1,10 @@
 <script>
+	import Lazy from 'svelte-lazy';
     import LandingPageSection from "$lib/components/landingPage/LandingPageSection.svelte";
+import Roadmap from "$lib/components/landingPage/Roadmap.svelte";
+import Why from "$lib/components/landingPage/Why.svelte";
 import { menuBarHeight } from "$lib/stores/stores";
+import Feedback from '$lib/components/landingPage/Feedback.svelte';
 </script>
 
 
@@ -15,7 +19,21 @@ import { menuBarHeight } from "$lib/stores/stores";
 
 <div class="mt-[-{$menuBarHeight}]">
 
-<LandingPageSection />
+	<LandingPageSection />
+	<Lazy>
+		<Why/>
+	</Lazy>
+	<Lazy>
+		<Feedback />
+	</Lazy>
+	<Lazy>
+		<Roadmap />
+	</Lazy>
+
+
+
+
+
 </div>
 
 

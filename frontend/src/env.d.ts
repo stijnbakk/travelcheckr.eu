@@ -12,6 +12,10 @@ interface ImportMetaEnv {
     readonly VITE_RULEFEEDBACK_DB_ID: string;
     readonly VITE_RULEFEEDBACK_ORIGIN: "development" | "staging" |"production";
 
+    readonly VITE_NEWSLETTERSIGNUP_DB_ID: string;
+
+    readonly VITE_FEEDBACK_DB_ID: string;
+
     readonly VITE_DEPLOY_MODE: "development" | "beta" | "live";
     // more env variables...
   }

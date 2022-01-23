@@ -2,6 +2,7 @@
 	import '../app.css';
 	import {isBeta, menuBarHeight, queryInputArrivalDate, queryInputDestination} from '$lib/stores/stores'
 	import { onDestroy } from 'svelte';
+import NewsletterSignUp from '$lib/components/common/NewsletterSignUp.svelte';
 
 	const unsubscribe = isBeta.subscribe((value) => ($isBeta = value));
 	onDestroy(unsubscribe);
@@ -22,21 +23,25 @@
 
 	<div class="pt-[{$menuBarHeight}]">
 		<slot />
-	</div>
 
-	
-
-	<!-- <div class="w-full p-3">
-		<div class="w-full bg-yellow-300 text-black font-bold p-3 rounded text-sm text-center">
-			<div>
-				Welcome! Please note this website is not yet officially launched. Some things might not work as expected<br/><span class='font-normal'>Congratulations! You're now an official beta user 😎. <a class="underline underline-offset-2" href="/feedback">I'd love to know who you are and how you think I improve the site</a></span>
+		
+		<div class="bg-neutral-600">
+			<div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center">
+			  <div class="lg:w-0 lg:flex-1">
+				<h2 class="text-3xl font-bold font-serif tracking-tight text-white sm:text-4xl" id="newsletter-headline">
+				  Want me to keep you up to date?
+				</h2>
+				<p class="mt-3 max-w-3xl text-lg leading-6 text-gray-300">
+				  Drop your email. I won't spam you. Pinky promise.
+				</p>
+			  </div>
+			  <NewsletterSignUp />
 			</div>
-		</div>
-	</div> -->
+		  </div>
 
-	
+	</div>
 </main>
-<footer class='bg-neutral-700 p-10 text-center text-white'>
+<footer class='bg-neutral-900 p-10 text-center text-white'>
 	<p class='font-serif font-bold'>TravelCheckr<span class="font-normal">.eu</span></p>
 	<p class="opacity-25">Built with ♥ in Haarlem, Netherlands</p>
 	<a class="opacity-25 underline underline-offset-2" href="mailto:stijn@travelcheckr.eu">stijn@travelcheckr.eu</a>

@@ -1,6 +1,5 @@
 <script>
     export let ruleData;
-    console.log(ruleData)
 </script>
 
 

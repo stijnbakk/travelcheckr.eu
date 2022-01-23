@@ -1,7 +1,8 @@
 export type TCountry = 
     "germany" | 
     "belgium" |
-    "austria"
+    "austria" |
+    "france" 
 
 export interface ICountry {
     code: TCountry,

@@ -19,7 +19,6 @@
         isButtonWaitingForInput = true : 
         isButtonWaitingForInput = false;
     
-    $: console.log("$queryResultValid: ", $queryResultValid);
 
     export const startQueryRequest = () => {
         isButtonLoading = true;
