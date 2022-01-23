@@ -2,7 +2,6 @@
     import { exampleGroupedRules } from "$lib/constants/exampleGroupedRules"
     import QueryBox from "$lib/components/queryBox/queryBox.svelte"
     import RuleGroupCard from "$lib/components/rules/RuleGroupCard.svelte"
-    import LandingPageContainer from "./LandingPageContainer.svelte";
     import EuropeMap from "./EuropeMap.svelte";
     import Lazy from 'svelte-lazy';
     import BetaRuleWarning from "../BetaWarnings/BetaRuleWarning.svelte";
