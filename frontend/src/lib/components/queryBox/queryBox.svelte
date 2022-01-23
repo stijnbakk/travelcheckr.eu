@@ -1,21 +1,28 @@
 <script>
-import BetaRuleWarning from "../BetaWarnings/BetaRuleWarning.svelte";
-
-
-    let queryResult;
     
-    let isButtonAvailable = true;
+    // Import custom components
+    import BetaRuleWarning from "../BetaWarnings/BetaRuleWarning.svelte";
+
+    // Import constants
+    import { countriesValues } from "$lib/constants/countryValues";
+
+    // Import global store variables
+    import { isBeta, queryResultAvailable } from "$lib/stores/stores";
+    import { queryInputDestination, queryInputArrivalDate } from "$lib/stores/stores"
+    import { queryResult, queryResultValid} from "$lib/stores/stores";
     
-    export let setResultsAvailable;
-    export let setQueryResult;
 
-    let initialDate = new Date()
-    let search_date= initialDate.toISOString().split('T')[0]
-    // let search_date="2022-01-15"
-    let destination="germany"
+    // Manage button state
+    let isButtonWaitingForInput = true;
+    let isButtonLoading = false;
+    $: ($queryInputDestination === "" || $queryInputArrivalDate ==="") ?     
+        isButtonWaitingForInput = true : 
+        isButtonWaitingForInput = false;
+    
+    $: console.log("$queryResultValid: ", $queryResultValid);
 
-    const startQueryRequest = () => {
-        isButtonAvailable = false;
+    export const startQueryRequest = () => {
+        isButtonLoading = true;
         queryRulesFromBackend();
         logQueryToBackend();
     }
@@ -24,24 +31,24 @@ import BetaRuleWarning from "../BetaWarnings/BetaRuleWarning.svelte";
         const getResult = await fetch('/api/query/query_rules',{
             method: 'POST',
             body: JSON.stringify({
-                search_date: search_date,
-                destination: destination
+                search_date: $queryInputArrivalDate,
+                destination: $queryInputDestination['code']
             })
         });
 
-        queryResult = await getResult.json();
-        console.log(queryResult);
-        if(queryResult){setResultsAvailable(true)}
-        if(queryResult){setQueryResult(queryResult)}
-        isButtonAvailable = true;
+        $queryResult = await getResult.json();
+
+        if($queryResult){$queryResultValid = true;}
+        if($queryResult){$queryResultAvailable = true;}
+        isButtonLoading = false;
     }
 
     const logQueryToBackend = async () => {
         fetch('/api/query/log_query',{
             method: 'POST',
             body: JSON.stringify({
-                search_date: search_date,
-                destination: destination
+                search_date: $queryInputArrivalDate,
+                destination: $queryInputDestination['code']
             })
         });
         
@@ -49,27 +56,45 @@ import BetaRuleWarning from "../BetaWarnings/BetaRuleWarning.svelte";
 
 </script>
 <div class="max-w-full mt-6 border-[1px] border-gray-600 rounded justify-left items-left p-5 text-left bg-white">
-    <!-- on:submit|preventDefault={toggleLandingResultView} -->
-    <form on:submit|preventDefault={startQueryRequest}>
-        <label class="label">Destination:</label>
-        <select class="input">
-            <option value="germany">Germany</option>
+
+    <form 
+        on:submit|preventDefault={startQueryRequest}
+        >
+        <label class="label" for="destination_input">Destination:</label>
+        <select 
+            id="destination_input" class="input" 
+            bind:value={$queryInputDestination}
+            on:change={() => $queryResultValid = false}
+        >
+            <option value="" disabled selected class="text-neutral-400">Select a destination</option>
+            {#each countriesValues as countryValue}
+                <option value={countryValue}>{countryValue.name}</option>
+            {/each}
         </select>
 
-        <label class="label">Arrival date:</label>
+        <label class="label" for="arrival_input">Arrival date:</label>
         <input 
-        type="date"
+            id="arrival_input"
+            type="date"
             class="input" 
-            bind:value={search_date}
+            bind:value={$queryInputArrivalDate}
+            on:change={() => $queryResultValid = false}
         >
 
-        <BetaRuleWarning />
+        {#if $isBeta}
+            <BetaRuleWarning />    
+        {/if}
         
         <input
-        type="submit"
-        class="button"
-        class:button_loading={!isButtonAvailable}
-        value={isButtonAvailable? "Check your trip" : "Loading results..."}>
+            type="submit"
+            class="button"
+            class:button_waiting={isButtonWaitingForInput}
+            class:button_loading={isButtonLoading}
+            disabled={isButtonWaitingForInput || isButtonLoading}
+            value={!isButtonWaitingForInput? 
+                isButtonLoading ? 
+                    "Loading..." : "Check your trip"
+                    : "Fill in your trip info"}>
     </form>
 </div>
 
@@ -81,9 +106,9 @@ import BetaRuleWarning from "../BetaWarnings/BetaRuleWarning.svelte";
         @apply w-full border-[1px] border-gray-200 font-serif rounded py-2 px-3 mb-3 text-lg;
     }
     .button{
-        @apply bg-black text-white font-serif rounded w-full p-3 mt-3;
+        @apply bg-black text-white font-serif rounded w-full p-3 mt-3 cursor-pointer;
     }
-    .button_loading{
-        @apply bg-neutral-400;
+    .button_loading, .button_waiting{
+        @apply bg-neutral-400 cursor-none;
     }
 </style>

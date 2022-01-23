@@ -1,14 +1,16 @@
 <script>
 	import '../app.css';
+	import {isBeta, queryInputArrivalDate, queryInputDestination} from '$lib/stores/stores'
+	import { onDestroy } from 'svelte';
 
-	let environment = import.meta.env.VITE_DEPLOY_MODE
-	$: isBeta = environment === 'beta' || "development" ? true : false;
+	const unsubscribe = isBeta.subscribe((value) => ($isBeta = value));
+	onDestroy(unsubscribe);
 </script>
 
 <main>
 	<div class="w-screen p-3 text-center absolute top-0 z-10 h-[50px]">
         <div>
-			{#if isBeta}
+			{#if $isBeta}
 				<span class="px-2  py-1 text-sm rounded inline-block bg-yellow-300 font-serif">beta</span>.
 			{/if}
             <p class="font-bold inline font-serif">TravelCheckr<span class="font-normal">.eu 

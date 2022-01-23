@@ -6,28 +6,23 @@
     import EuropeMap from "./EuropeMap.svelte";
     import Lazy from 'svelte-lazy';
     import BetaRuleWarning from "../BetaWarnings/BetaRuleWarning.svelte";
+    import { queryInputDestination, queryResult, queryResultAvailable, queryResultValid } from "$lib/stores/stores";
 
 
 
-
-    // Parameter set 1
-    export let setResultsAvailable;
-    export let isResultsAvailable;
-
-    // Parameter set 2
-    export let queryResult;
-    export let setQueryResult;
-    
-    // $:console.log('queryResult in landingpage:', queryResult)
-
-
+    // set some stuff for styling
     let menuBarHeight = '50px'
+
+    let startUpdatedQueryRequestInsideQueryBox;
+	function onStartQueryRequest() {
+		startUpdatedQueryRequestInsideQueryBox();
+	}
 </script>
 
 
 <div class="relative block h-auto">
     <Lazy>
-        <EuropeMap destination="germany" setMapToDestination={isResultsAvailable}/>
+        <EuropeMap />
     </Lazy>
 
     <div class="grid grid-rows-[{menuBarHeight}_auto] md:h-screen relative top-0">
@@ -42,7 +37,7 @@
                     md:grid 
                     md:grid-cols-[auto_auto] lg:grid-cols-[auto_auto_auto]
                 "
-                class:resultView={isResultsAvailable}
+                class:resultView={$queryResultAvailable}
             >
                 <div 
                     class="
@@ -57,13 +52,12 @@
                     
                     
                     <QueryBox 
-                        setResultsAvailable={setResultsAvailable}
-                        setQueryResult={setQueryResult}
+                        bind:startQueryRequest={startUpdatedQueryRequestInsideQueryBox}
                     />
                 </div>
 
 
-                {#if isResultsAvailable}
+                {#if $queryResultAvailable === true}
                 <div 
                     class="
                         column2 
@@ -72,31 +66,37 @@
                         py-8 p-5 md:pt-16
                         flex flex-col justify-center items-left
                         ">
-
-                        
-                    <h1 class="font-bold font-serif text-3xl mb-5">What you need to know about your trip</h1>
+                    {#if !$queryResultValid}
+                        <div class="text-left">
+                            <p class='mb-4'>It looks like you changed your destination or arrival date. Please check for the updated rules</p>
+                            <button on:click={onStartQueryRequest} class="underline underline-offset-2 inline w-auto">Sure, get me those new rules!</button>
+                        </div>
+                    {:else}
                     
-                    <div class="mt-6">
-                    {#if queryResult}
-                        {#if queryResult.a_actions_before_travel}
-                            <RuleGroupCard ruleset={queryResult.a_actions_before_travel}/>
-                        {/if}
+                        <h1 class="font-bold font-serif text-3xl mb-5">What you need to know about your trip to {$queryInputDestination['name']}</h1>
+                        
+                        <div class="mt-6">
+                        {#if $queryResult}
+                            {#if $queryResult['a_actions_before_travel']}
+                                <RuleGroupCard ruleset={$queryResult['a_actions_before_travel']}/>
+                            {/if}
 
-                        {#if queryResult.b_documents_during_travel}
-                            <RuleGroupCard ruleset={queryResult.b_documents_during_travel}/>
-                        {/if}
+                            {#if $queryResult['b_documents_during_travel']}
+                                <RuleGroupCard ruleset={$queryResult['b_documents_during_travel']}/>
+                            {/if}
 
-                        {#if queryResult.c_rules_during_stay}
-                            <RuleGroupCard ruleset={queryResult.c_rules_during_stay}/>
-                        {/if}
+                            {#if $queryResult['c_rules_during_stay']}
+                                <RuleGroupCard ruleset={$queryResult['c_rules_during_stay']}/>
+                            {/if}
 
-                        {#if queryResult.d_expect_during_stay}
-                            <RuleGroupCard ruleset={queryResult.d_expect_during_stay}/>
+                            {#if $queryResult['d_expect_during_stay']}
+                                <RuleGroupCard ruleset={$queryResult['d_expect_during_stay']}/>
+                            {/if}
                         {/if}
+                        </div>
+
+                        <a class="text-xs underline underline-offset-2 leading-relaxed" href="/rule-feedback">Rules are changing constantly. I'm doing my best to keep up. <br/> Do you know of a rule I missed? Or a rule that is no longer relevant? Let me know!</a>
                     {/if}
-                    </div>
-
-                    <a class="text-xs underline underline-offset-2 leading-relaxed" href="/rule-feedback">Rules are changing constantly. I'm doing my best to keep up. <br/> Do you know of a rule I missed? Or a rule that is no longer relevant? Let me know!</a>
                 </div>
 
                 <div class="column3"></div>

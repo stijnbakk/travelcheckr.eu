@@ -1,6 +1,5 @@
 <script>
-    export let setMapToDestination;
-    export let destination;
+    import { queryInputDestination, queryResultAvailable, queryResultValid } from "$lib/stores/stores";
 </script>
 
 
@@ -8,7 +7,7 @@
 
     <div class="europeMapParent">
 
-    <div class={setMapToDestination ? `europeMap ${destination}` : 'europeMap'}>
+    <div class={$queryResultAvailable && $queryResultValid ? `europeMap ${$queryInputDestination['code']}` : 'europeMap'}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 434 444" preserveAspectRatio="xMidYMid meet">     
             <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                 <g id="europe" transform="translate(0.552250, 0.246622)" fill="#f1f1f1" stroke="#FFFFFF" stroke-width="0.2">
