@@ -5,6 +5,7 @@
     import LandingPageContainer from "./LandingPageContainer.svelte";
     import EuropeMap from "./EuropeMap.svelte";
     import Lazy from 'svelte-lazy';
+    import BetaRuleWarning from "../BetaWarnings/BetaRuleWarning.svelte";
 
 
 
@@ -72,8 +73,10 @@
                         flex flex-col justify-center items-left
                         ">
 
-                    <h1 class="font-bold font-serif text-3xl mb-10">What you need to know about your trip</h1>
-
+                        
+                    <h1 class="font-bold font-serif text-3xl mb-5">What you need to know about your trip</h1>
+                    
+                    <div class="mt-6">
                     {#if queryResult}
                         {#if queryResult.a_actions_before_travel}
                             <RuleGroupCard ruleset={queryResult.a_actions_before_travel}/>
@@ -91,6 +94,9 @@
                             <RuleGroupCard ruleset={queryResult.d_expect_during_stay}/>
                         {/if}
                     {/if}
+                    </div>
+
+                    <a class="text-xs underline underline-offset-2 leading-relaxed" href="/rule-feedback">Rules are changing constantly. I'm doing my best to keep up. <br/> Do you know of a rule I missed? Or a rule that is no longer relevant? Let me know!</a>
                 </div>
 
                 <div class="column3"></div>
