@@ -9,23 +9,29 @@ import Beta from './beta.svelte';
 </script>
 
 
-<!-- <meta property="og:title" content="Check travel rules and COVID restrictions - TravelCheckr.eu">
-<meta property="og:site_name" content="TravelCheckr.eu">
-<meta property="og:url" content="https://www.travelcheckr.eu">
-<meta property="og:description" content="Quickly make sense of the maze of COVID rules. Easily understand what you need to do, bring, follow and expect about your">
-<meta property="og:type" content="website">
-<meta property="og:image" content=""> -->
-
 <svelte:head>
 	<title>Check travel rules and COVID restrictions - TravelCheckr.eu</title>
 	<meta name="robots" content="noindex nofollow" />
 	<html lang="en" />
-	<meta property="og:title" content="Check travel rules and COVID restrictions - TravelCheckr.eu">
-	<meta property="og:site_name" content="TravelCheckr.eu">
-	<meta property="og:url" content="https://www.travelcheckr.eu">
-	<meta property="og:description" content="Quickly make sense of the maze of COVID rules. Easily understand what you need to do, bring, follow and expect about your">
+
+	<!-- Primary Meta Tags -->
+	<title>Check travel rules and COVID restrictions - TravelCheckr.eu</title>
+	<meta name="title" content="Check travel rules and COVID restrictions - TravelCheckr.eu">
+	<meta name="description" content="Quickly make sense of the maze of COVID rules. Easily understand what you need to do, bring, follow and expect about your">
+
+	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://www.travelcheckr.eu/">
+	<meta property="og:title" content="Check travel rules and COVID restrictions - TravelCheckr.eu">
+	<meta property="og:description" content="Quickly make sense of the maze of COVID rules. Easily understand what you need to do, bring, follow and expect about your">
 	<meta property="og:image" content="./static/cover.png">
+
+	<!-- Twitter -->
+	<meta property="twitter:card" content="summary_large_image">
+	<meta property="twitter:url" content="https://www.travelcheckr.eu/">
+	<meta property="twitter:title" content="Check travel rules and COVID restrictions - TravelCheckr.eu">
+	<meta property="twitter:description" content="Quickly make sense of the maze of COVID rules. Easily understand what you need to do, bring, follow and expect about your">
+	<meta property="twitter:image" content="./static/cover.png">
 </svelte:head>
 
 
