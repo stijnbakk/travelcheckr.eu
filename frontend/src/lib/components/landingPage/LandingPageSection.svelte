@@ -23,7 +23,7 @@
         <EuropeMap />
     </Lazy>
 
-    <div class="grid grid-rows-[{$menuBarHeight}_auto] md:h-screen relative top-0">
+    <div class="grid grid-rows-[50px_auto] md:h-screen relative top-0">
         <div class=""><!-- empty placeholder for top menu bar content --></div>
         <div class="">
             <div 
