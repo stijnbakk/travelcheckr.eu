@@ -1,4 +1,6 @@
 <script>
+import BetaRuleWarning from "../BetaWarnings/BetaRuleWarning.svelte";
+
 
     let queryResult;
     
@@ -60,6 +62,9 @@
             class="input" 
             bind:value={search_date}
         >
+
+        <BetaRuleWarning />
+        
         <input
         type="submit"
         class="button"
