@@ -1,6 +1,6 @@
 <script>
 	import '../app.css';
-	import {isBeta, queryInputArrivalDate, queryInputDestination} from '$lib/stores/stores'
+	import {isBeta, menuBarHeight, queryInputArrivalDate, queryInputDestination} from '$lib/stores/stores'
 	import { onDestroy } from 'svelte';
 
 	const unsubscribe = isBeta.subscribe((value) => ($isBeta = value));
@@ -8,7 +8,7 @@
 </script>
 
 <main>
-	<div class="w-screen p-3 text-center absolute top-0 z-10 h-[50px]">
+	<div class="w-screen p-3 text-center absolute top-0 z-10 h-[{$menuBarHeight}]">
         <div>
 			{#if $isBeta}
 				<span class="px-2  py-1 text-sm rounded inline-block bg-yellow-300 font-serif">beta</span>.
@@ -18,7 +18,7 @@
         </div>
     </div>
 
-	<div class="pt-[50px]">
+	<div class="pt-[{$menuBarHeight}]">
 		<slot />
 	</div>
 
