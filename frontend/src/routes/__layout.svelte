@@ -2,19 +2,17 @@
 	import '../app.css';
 
 	let environment = import.meta.env.VITE_DEPLOY_MODE
-	$: isBeta = environment === 'beta' ? true : environment ==="development" ? true : false;
+	$: isBeta = environment === 'beta' || "development" ? true : false;
 </script>
 
 <main>
 	<div class="w-screen p-3 text-center absolute top-0 z-10 h-[50px]">
         <div>
-            <h1 class="font-bold font-serif">TravelCheckr<span class="font-normal">.eu 
-
-				{#if isBeta}
-				[beta]
-				{/if}
-
-			</span></h1>
+			{#if isBeta}
+				<span class="px-2  py-1 text-sm rounded inline-block bg-yellow-300 font-serif">beta</span>.
+			{/if}
+            <p class="font-bold inline font-serif">TravelCheckr<span class="font-normal">.eu 
+			</span></p>
         </div>
     </div>
 
