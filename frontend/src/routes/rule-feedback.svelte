@@ -1,1 +1,2 @@
-<div>Rule-feedback</div>
+
+<div class="container mx-auto"></div>

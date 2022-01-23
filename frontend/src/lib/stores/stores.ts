@@ -2,6 +2,7 @@ import { writable } from 'svelte/store';
 
 // GLOBAL STORE
 export const isBeta = writable(true);
+export const menuBarHeight = writable('50px');
 
 // QUERY INPUT
 const initialDate = new Date()
