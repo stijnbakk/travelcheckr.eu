@@ -69,6 +69,7 @@
                         h-full 
                         md:overflow-y-scroll 
                         py-8 p-5 md:pt-16
+                        flex flex-col justify-center items-left
                         ">
 
                     <h1 class="font-bold font-serif text-3xl mb-10">What you need to know about your trip</h1>
@@ -106,15 +107,16 @@
 
 
 
-<style lang="scss">
+<style lang="less">
+    ::-webkit-scrollbar {
+    display: none;
+}
     .highlighted_underline{
-        @apply underline underline-offset-2
+        @apply underline underline-offset-2;
     }
     
-    #landing{
-        transition: all 0.5s ease-in-out;
-    }
     @media only screen and (max-width: 767px) {
+        
         #landing{
             .column1{
                 width: 100vw;
@@ -196,5 +198,6 @@
             }
         }
     }
+ 
     
     </style>
