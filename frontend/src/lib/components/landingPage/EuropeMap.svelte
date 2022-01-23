@@ -69,7 +69,7 @@
 </div>
 
 
-<style lang="scss">
+<style lang="css">
     .europeMapParent{
         position: relative
     }
@@ -81,15 +81,14 @@
         left: 50%;
         transform: translate(-50%, -50%);
         background-color: white;
-        svg{
+    }
+    .europeMap svg{
             height: 100%;
             width: 100%;
         }
-        path{
-            // fill: #EDEDED;
+    .europeMap path{
             transition: fill 1s ease;
         }
-    }
     @media screen and (max-width: 1023px){
         .europeMap{
             width: 200vw;
@@ -111,93 +110,81 @@
         .germany{
             width: 160vw;
             transform: translate(-26%,-55%);
-            #germany{fill: rgb(145, 145, 145);}
         }
+        .germany #germany{fill: rgb(145, 145, 145);}
         .belgium{
             width: 360vw;
             transform: translate(-25%,-58%);
-            #belgium{fill: rgb(145, 145, 145);}
-        
         }
+        .belgium #belgium{fill: rgb(145, 145, 145);}
         .austria{
             width: 220vw;
             transform: translate(-36%,-65%);
-            #austria{fill: rgb(145, 145, 145);}
-        
         }
+        .austria #austria{fill: rgb(145, 145, 145);}
         .france{
             width: 140vw;
             transform: translate(-10%,-68%);
-            #france{fill: rgb(145, 145, 145);}
-        
         }
+        .france #france{fill: rgb(145, 145, 145);}
         .spain{
             width: 110vw;
-            transform: translate(10%,-84%);
-            #spain{fill: rgb(145, 145, 145);}
-        
+            transform: translate(10%,-84%);        
         }
+        .spain #spain{fill: rgb(145, 145, 145);}
+
         .portugal{
             width: 160vw;
             transform: translate(11%,-84%);
-            #portugal{fill: rgb(145, 145, 145);}
-        
         }
+        .portugal #portugal{fill: rgb(145, 145, 145);}
+
         .italy{
             width: 120vw;
             transform: translate(-25%,-82%);
-            #italy{fill: rgb(145, 145, 145);}
-        
         }
+        .italy #italy{fill: rgb(145, 145, 145);}
         .norway{
             width: 110vw;
             transform: translate(-25%,-22%);
-            #norway{fill: rgb(145, 145, 145);}
-        
         }
+        .norway #norway{fill: rgb(145, 145, 145);}
         .sweden{
             width: 110vw;
-            transform: translate(-26%,-25%);
-            #sweden{fill: rgb(145, 145, 145);}
-        
+            transform: translate(-26%,-25%);        
         }
+        .sweden #sweden{fill: rgb(145, 145, 145);}
         .denmark{
             width: 260vw;
             transform: translate(-35%,-45%);
-            #denmark{fill: rgb(145, 145, 145);}
-        
         }
+        .denmark #denmark{fill: rgb(145, 145, 145);}
 
         .netherlands{
             width: 360vw;
             transform: translate(-27%,-54%);
-            #netherlands{fill: rgb(145, 145, 145);}
-        
         }
+        .netherlands #netherlands{fill: rgb(145, 145, 145);}
         .united_kingdom{
             width: 150vw;
             transform: translate(-5%,-45%);
-            #united_kingdom{fill: rgb(145, 145, 145);}
-        
         }
+        .united_kingdom #united_kingdom{fill: rgb(145, 145, 145);}
         .ireland{
             width: 220vw;
             transform: translate(0%,-47%);
-            #ireland{fill: rgb(145, 145, 145);}
-        
         }
+        .ireland #ireland{fill: rgb(145, 145, 145);}
         .switzerland{
             width: 300vw;
             transform: translate(-30%,-70%);
-            #switserland{fill: rgb(145, 145, 145);}
-        
         }
+        .switzerland #switserland{fill: rgb(145, 145, 145);}
         .czech{
             width: 230vw;
             transform: translate(-40%,-60%);
-            #czech{fill: rgb(145, 145, 145);}
-        
         }
+        .czech #czech{fill: rgb(145, 145, 145);}
 
     }
 </style>
