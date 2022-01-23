@@ -5,6 +5,7 @@ import Roadmap from "$lib/components/landingPage/Roadmap.svelte";
 import Why from "$lib/components/landingPage/Why.svelte";
 import { menuBarHeight } from "$lib/stores/stores";
 import Feedback from '$lib/components/landingPage/Feedback.svelte';
+import Beta from './beta.svelte';
 </script>
 
 
@@ -24,7 +25,7 @@ import Feedback from '$lib/components/landingPage/Feedback.svelte';
 	<meta property="og:url" content="https://www.travelcheckr.eu">
 	<meta property="og:description" content="Quickly make sense of the maze of COVID rules. Easily understand what you need to do, bring, follow and expect about your">
 	<meta property="og:type" content="website">
-	<!-- <meta property="og:image" content=""> -->
+	<meta property="og:image" content="./static/cover.png">
 </svelte:head>
 
 
