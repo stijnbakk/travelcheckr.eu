@@ -2,7 +2,7 @@
 <div class="mx-auto p-5 py-20 max-w-[900px]">
         <h1 class="font-bold font-serif text-4xl pb-4">What's coming</h1>
         <p class="font-serif text-2xl pb-6">A sneak peak into how I plan on improving this website</p>
-        <p class="font-serif mb-5">Already want to try out new features?<br/>Go to <a href="beta.travelcheckr.eu" class="underline underline-offset-2">beta.travelcheckr.eu</a> and help me improve this website.</p>
+        <p class="font-serif mb-5">Already want to try out new features?<br/>Go to <a href="https://beta.travelcheckr.eu" class="underline underline-offset-2">beta.travelcheckr.eu</a> and help me improve this website.</p>
 
         <a class="button" href="/feedback">Tell me what features you want me to build</a>
 
@@ -25,7 +25,7 @@
                     <li>Advanced options: 'from', 'via' and 'vaccination status' <span class="font-normal"> - No more searching what special rules apply if you're only transferring through a country</span></li>
                     <li>🇪🇺 Add all EU countries <span class="font-normal"> - Keep on growing</span></li>
                     <li>GraphQL API 🕸 <span class="font-normal"> - To easily share links with friends and have better search results</span></li>
-                    <li>API as a Service 💶 <span class="font-normal"> - What you can check these rules immediately from the app of your airline or train company?</span></li>
+                    <li>API as a Service 💶 <span class="font-normal"> - What if you can check these rules immediately from the app of your airline or train company?</span></li>
                 </ul>
             </li>
             <li>Version 2.0
