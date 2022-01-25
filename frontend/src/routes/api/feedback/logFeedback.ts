@@ -19,12 +19,12 @@ export async function post(request) {
         console.log('logFeedback called');
 
         // 2. Store incoming data
-        const feedback = request.body.feedback ? request.feedback : 'No feedback provided';
+        const feedback = request.body.feedback ? request.body.feedback : 'No feedback provided';
         const name = request.body.name ? request.body.name : 'No name provided';
         const email = request.body.email ? request.body.email : 'No email provided';
 
         // 3. Create query body
-        const query = generateFeedbackBody(feedback, name, email);
+        const query = generateFeedbackBody(name, email, feedback);
 
         // 4.  Setup request
         const uri:string = import.meta.env.VITE_QUERYLOG_URI;
