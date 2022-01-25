@@ -10,8 +10,7 @@ import Beta from './beta.svelte';
 
 
 <svelte:head>
-	<title>Check travel rules and COVID restrictions - TravelCheckr.eu</title>
-	<meta name="robots" content="noindex nofollow" />
+	<meta name="robots" content="all" />
 	<html lang="en" />
 
 	<!-- Primary Meta Tags -->
