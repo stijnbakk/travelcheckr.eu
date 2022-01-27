@@ -9,6 +9,9 @@ const createCountryObject = (code:TCountry, name:string):ICountry => {
 
 export const countriesValues:TCountries = [
     createCountryObject('austria','Austria'),
+    createCountryObject('belgium','Belgium'),
+    createCountryObject('denmark','Denmark'),
     createCountryObject('france','France'),
+    createCountryObject('netherlands','Netherlands'),
 ]
 
