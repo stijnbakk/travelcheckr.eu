@@ -1,5 +1,5 @@
 <div class="bg-neutral-200">
-<div class="mx-auto p-5 py-20 max-w-[900px]">
+<div class="mx-auto p-5 py-20 max-w-[900px] line-through">
         <h1 class="font-bold font-serif text-4xl pb-4">What's coming</h1>
         <p class="font-serif text-2xl pb-6">A sneak peak into how I plan on improving this website</p>
         <p class="font-serif mb-5">Already want to try out new features?<br/>Go to <a href="https://beta.travelcheckr.eu" class="underline underline-offset-2">beta.travelcheckr.eu</a> and help me improve this website.</p>

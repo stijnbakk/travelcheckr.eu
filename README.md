@@ -1,38 +1,16 @@
-# create-svelte
+# 🛫 TravelCheckr.eu
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte);
+In May of 2020 I built a website that allowed people to easily understand COVID restrictions for NL. Not following up on this website, I spotted a frustration of mine in the winter of 2021; travelling through Europe. Each country had its own restrictions. All of them were very difficult to really understand.
 
-## Creating a project
+I built the concept where restrictions are simplified down to what you should 'do', 'bring', 'know' 'expect' about your trip. When planning your trip, you can quickly check what you need to know. 
 
-If you're seeing this, you've probably already done this step. Congrats!
+**I decided not to continue maintaining the application, since COVID restrictions are largely lifted.**
 
-```bash
-# create a new project in the current directory
-npm init svelte@next
+## Tech
+I used this project as an experiment to get familiar with SvelteKit. The app is hosted with Vercel at [travelcheckr.eu](http://www.travelcheckr.eu). 
 
-# create a new project in my-app
-npm init svelte@next my-app
-```
+For the backend I use Notion with its API. In Notion I use the 'timeline' view to organise rules by date, and make it easy to manage them. 
 
-> Note: the `@next` is temporary
+When a user enters his information, a request is made to the SvelteKit endpoint, which in turn makes a query to the Notion API. Upon returning the data, the data is processed and displayed in a neat overview.
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-Before creating a production version of your app, install an [adapter](https://kit.svelte.dev/docs#adapters) for your target environment. Then:
-
-```bash
-npm run build
-```
-
-> You can preview the built app with `npm run preview`, regardless of whether you installed an adapter. This should _not_ be used to serve your app in production.
+I hope this site provides some form of inspiration. I had a ton of fun building it 🙂.
